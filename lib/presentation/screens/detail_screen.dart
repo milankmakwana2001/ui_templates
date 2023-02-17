@@ -27,6 +27,7 @@ class _DetailScreenState extends State<DetailScreen> {
         ),
       ),
       body: GridView.builder(
+        physics: BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(
           horizontal: deviceWidth * 0.02,
           vertical: deviceHeight * 0.015,
