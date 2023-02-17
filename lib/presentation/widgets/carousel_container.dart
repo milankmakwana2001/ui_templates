@@ -82,7 +82,7 @@ class _CarouselContainerState extends State<CarouselContainer> {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    _carouselCubit.close();
+    // _carouselCubit.close();
     _pageController.dispose();
     _timer?.cancel();
   }
