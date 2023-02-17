@@ -4,6 +4,10 @@ class AppStrings {
 
   static String leftArrow='assets/icons/left_arrow.svg';
   static String rightArrow='assets/icons/right_arrow.svg';
+  static String homeIcon='assets/icons/Home.svg';
+  static String favouriteIcon='assets/icons/Heart.svg';
+  static String userAccountIcon='assets/icons/Profile.svg';
+  static String cartIcon='assets/icons/Buy.svg';
 
 
   static List<String> carouselImageList = [
@@ -24,4 +28,5 @@ class AppStrings {
             (index) => allChars[random.nextInt(allChars.length)]).join();
     return randomString;    // return the generated string
   }
+
 }

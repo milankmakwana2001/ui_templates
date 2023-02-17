@@ -32,7 +32,7 @@ class CarouselContainer extends StatefulWidget {
 class _CarouselContainerState extends State<CarouselContainer> {
   late PageController _pageController;
   late CarouselCubit _carouselCubit;
-  late Timer _timer;
+   Timer? _timer;
 
   // int activePage = 1;
 
@@ -63,11 +63,15 @@ class _CarouselContainerState extends State<CarouselContainer> {
           _currentPage = 0;
         }
 
-        _pageController.animateToPage(
-          _currentPage,
-          duration: widget.duration ?? const Duration(milliseconds: 350),
-          curve: Curves.easeIn,
-        );
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (_pageController.hasClients) {
+            _pageController.animateToPage(
+              _currentPage,
+              duration: widget.duration ?? const Duration(milliseconds: 350),
+              curve: Curves.easeIn,
+            );
+          }
+        });
       });
     }
 
@@ -80,7 +84,7 @@ class _CarouselContainerState extends State<CarouselContainer> {
     super.dispose();
     _carouselCubit.close();
     _pageController.dispose();
-    _timer.cancel();
+    _timer?.cancel();
   }
 
   @override

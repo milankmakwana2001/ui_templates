@@ -2,10 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ui_templates/business_logic/bottom_navigatiobar_cubit/bottom_navigationbar_cubit.dart';
 import 'package:ui_templates/business_logic/carouser_cubit/carosel_cubit.dart';
+import 'package:ui_templates/core/app_routes.dart';
+import 'package:ui_templates/presentation/screens/detail_screen.dart';
 import 'package:ui_templates/presentation/screens/home_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,
@@ -24,14 +28,15 @@ class MyApp extends StatelessWidget {
         BlocProvider<CarouselCubit>(
           create: (context) => CarouselCubit(),
         ),
-        // BlocProvider(
-        //   create: (context) => SubjectBloc(),
-        // ),
+        BlocProvider<BottomNavigationbarCubit>(
+          create: (context) => BottomNavigationbarCubit(),
+        ),
       ],
       child: MaterialApp(
         title: 'Ui template',
-        home: HomeScreen(),
+        initialRoute:HomeScreen.pageRoute,
         debugShowCheckedModeBanner: false,
+        routes: AppRoutes.getRoutes(),
       ),
     );
   }
