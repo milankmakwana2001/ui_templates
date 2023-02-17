@@ -56,8 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
               deviceHeight,
               deviceWidth,
             ),
-            sectionContainer(deviceWidth, deviceHeight,
-                wordCount: 100, paraCount: 2),
+            sectionContainer(
+              deviceWidth,
+              deviceHeight,
+              wordCount: 100,
+              paraCount: 2,
+            ),
             sectionContainer(
               deviceWidth,
               deviceHeight,
