@@ -2,9 +2,9 @@ part of 'carosel_cubit.dart';
 
 abstract class CarouselState extends Equatable {
 
-  late int activePage;
+  // late int activePage;
 
-   CarouselState([this.activePage=1]);
+   // CarouselState([this.activePage=1]);
 }
 
 class CarouselInitial extends CarouselState {

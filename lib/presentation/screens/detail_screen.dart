@@ -51,7 +51,7 @@ class _DetailScreenState extends State<DetailScreen> {
             child: Text(
               AppStrings.generateRandomString(1),
               style:
-              TextStyle(color: Colors.white, fontSize: deviceHeight * 0.05),
+                  TextStyle(color: Colors.white, fontSize: deviceHeight * 0.05),
               textAlign: TextAlign.center,
             ),
           );

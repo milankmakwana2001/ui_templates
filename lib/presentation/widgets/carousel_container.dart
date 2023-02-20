@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -88,8 +89,15 @@ class _CarouselContainerState extends State<CarouselContainer> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
     _carouselCubit = context.read<CarouselCubit>();
+    super.didChangeDependencies();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
     return Column(
       children: [
         Stack(
@@ -103,8 +111,10 @@ class _CarouselContainerState extends State<CarouselContainer> {
                 controller: _pageController,
                 itemCount: AppStrings.carouselImageList.length,
                 onPageChanged: (page) {
+                  log('kjfkj ${page}');
                   if (widget.duration == null) {
                     _carouselCubit.changePage(page);
+                    // _carouselCubit.changePage(page);
                   }
                 },
                 itemBuilder: (
@@ -196,9 +206,11 @@ class _CarouselContainerState extends State<CarouselContainer> {
                                     BlocBuilder<CarouselCubit, CarouselState>(
                                   builder: (context, state) {
                                     if (state is Success) {
+                                      log(state.page.toString());
                                       return Row(
                                         children: indicators(
                                           AppStrings.carouselImageList.length,
+
                                           state.page,
                                         ),
                                       );
