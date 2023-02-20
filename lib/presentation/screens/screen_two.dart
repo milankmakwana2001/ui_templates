@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class ScreenTwo extends StatefulWidget {
@@ -8,6 +10,22 @@ class ScreenTwo extends StatefulWidget {
 }
 
 class _ScreenTwoState extends State<ScreenTwo> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    log('screen 2 inited');
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    log('screen 2 disposed');
+    super.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

@@ -111,7 +111,6 @@ class _CarouselContainerState extends State<CarouselContainer> {
                 controller: _pageController,
                 itemCount: AppStrings.carouselImageList.length,
                 onPageChanged: (page) {
-                  log('kjfkj ${page}');
                   if (widget.duration == null) {
                     _carouselCubit.changePage(page);
                     // _carouselCubit.changePage(page);
@@ -206,7 +205,6 @@ class _CarouselContainerState extends State<CarouselContainer> {
                                     BlocBuilder<CarouselCubit, CarouselState>(
                                   builder: (context, state) {
                                     if (state is Success) {
-                                      log(state.page.toString());
                                       return Row(
                                         children: indicators(
                                           AppStrings.carouselImageList.length,
