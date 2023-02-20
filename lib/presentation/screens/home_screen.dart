@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui_templates/business_logic/Ip_address_cubit/ip_address_cubit.dart';
 import 'package:ui_templates/business_logic/bottom_navigatiobar_cubit/bottom_navigationbar_cubit.dart';
 import 'package:ui_templates/business_logic/carouser_cubit/carosel_cubit.dart';
 import 'package:ui_templates/core/app_colors.dart';
@@ -62,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         BlocProvider.of<BottomNavigationbarCubit>(context)
                             .getBottomNavbarItem(BottomNavBarItem.Favourites);
                         BlocProvider.of<CarouselCubit>(context).changePage(0);
+                        BlocProvider.of<IpAddressCubit>(context).getData();
                       } else if (index == 2) {
                         BlocProvider.of<BottomNavigationbarCubit>(context)
                             .getBottomNavbarItem(BottomNavBarItem.UserAccount);

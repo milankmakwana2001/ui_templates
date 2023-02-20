@@ -2,12 +2,12 @@ import 'dart:math';
 
 class AppStrings {
 
-  static String leftArrow='assets/icons/left_arrow.svg';
-  static String rightArrow='assets/icons/right_arrow.svg';
-  static String homeIcon='assets/icons/Home.svg';
-  static String favouriteIcon='assets/icons/Heart.svg';
-  static String userAccountIcon='assets/icons/Profile.svg';
-  static String cartIcon='assets/icons/Buy.svg';
+  static String leftArrow = 'assets/icons/left_arrow.svg';
+  static String rightArrow = 'assets/icons/right_arrow.svg';
+  static String homeIcon = 'assets/icons/Home.svg';
+  static String favouriteIcon = 'assets/icons/Heart.svg';
+  static String userAccountIcon = 'assets/icons/Profile.svg';
+  static String cartIcon = 'assets/icons/Buy.svg';
 
 
   static List<String> carouselImageList = [
@@ -19,14 +19,23 @@ class AppStrings {
   ];
 
 
-  static  String generateRandomString(int lengthOfString){
+  static String generateRandomString(int lengthOfString) {
     final random = Random();
-    const allChars='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const allChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     // below statement will generate a random string of length using the characters
     // and length provided to it
     final randomString = List.generate(lengthOfString,
             (index) => allChars[random.nextInt(allChars.length)]).join();
-    return randomString;    // return the generated string
+    return randomString; // return the generated string
   }
+
+
+  static String GetIpAddressApiUrl = 'https://api.ipify.org/?format=json';
+
+  static String  GetInfoOfIpAddressApiUrl(String ip) {
+    return 'https://ipinfo.io/${ip.toString()}/geo';
+  }
+
+
 
 }
