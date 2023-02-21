@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ui_templates/business_logic/Ip_address_cubit/ip_address_cubit.dart';
-import 'package:ui_templates/business_logic/models/get_info_of_ip_address_repo_model.dart';
 import 'package:ui_templates/core/app_colors.dart';
 
 class ScreenTwo extends StatefulWidget {
@@ -46,17 +45,14 @@ class _ScreenTwoState extends State<ScreenTwo> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Secret Info',
+                    'Basic Info',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: deviceHeight * 0.03,
                     ),
                   ),
-
                   Container(
-                    margin: EdgeInsets.only(
-                      top: deviceHeight*0.02
-                    ),
+                    margin: EdgeInsets.only(top: deviceHeight * 0.02),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -66,9 +62,6 @@ class _ScreenTwoState extends State<ScreenTwo> {
                         Text('country : ${state.ipInfo.country.toString()}'),
                         Text('org : ${state.ipInfo.org.toString()}'),
                         Text('postal : ${state.ipInfo.postal.toString()}'),
-                        // Text('ip : ${state.ipInfo.ip.toString()}'),
-                        // Text('ip : ${state.ipInfo.ip.toString()}'),
-                        // Text('ip : ${state.ipInfo.ip.toString()}'),
                       ],
                     ),
                   ),

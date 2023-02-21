@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_templates/business_logic/Ip_address_cubit/ip_address_cubit.dart';
 import 'package:ui_templates/business_logic/bottom_navigatiobar_cubit/bottom_navigationbar_cubit.dart';
 import 'package:ui_templates/business_logic/carouser_cubit/carosel_cubit.dart';
+import 'package:ui_templates/business_logic/dog_jokes_cubit/dog_joke_cubit.dart';
 import 'package:ui_templates/core/app_colors.dart';
 import 'package:ui_templates/core/app_enums.dart';
 import 'package:ui_templates/core/app_strings.dart';
@@ -68,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         BlocProvider.of<BottomNavigationbarCubit>(context)
                             .getBottomNavbarItem(BottomNavBarItem.UserAccount);
                         BlocProvider.of<CarouselCubit>(context).changePage(0);
+                        BlocProvider.of<DogJokeCubit>(context).getData();
                       } else if (index == 3) {
                         BlocProvider.of<BottomNavigationbarCubit>(context)
                             .getBottomNavbarItem(BottomNavBarItem.Cart);

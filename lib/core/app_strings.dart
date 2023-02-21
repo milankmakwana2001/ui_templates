@@ -36,6 +36,10 @@ class AppStrings {
     return 'https://ipinfo.io/${ip.toString()}/geo';
   }
 
+  static String dogUrl='https://dog.ceo/api/breeds/image/random';
+  static String jokesUrl='https://official-joke-api.appspot.com/random_joke';
+
+
 
 
 }
