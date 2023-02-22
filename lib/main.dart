@@ -6,9 +6,11 @@ import 'package:ui_templates/business_logic/Ip_address_cubit/ip_address_cubit.da
 import 'package:ui_templates/business_logic/bottom_navigatiobar_cubit/bottom_navigationbar_cubit.dart';
 import 'package:ui_templates/business_logic/carouser_cubit/carosel_cubit.dart';
 import 'package:ui_templates/business_logic/dog_jokes_cubit/dog_joke_cubit.dart';
+import 'package:ui_templates/business_logic/product_cubit/product_cubit.dart';
 import 'package:ui_templates/business_logic/reositories/get_info_of_ip_address_repo.dart';
 import 'package:ui_templates/business_logic/reositories/get_ip_address_repo.dart';
 import 'package:ui_templates/business_logic/reositories/jokes_dogs_repo.dart';
+import 'package:ui_templates/business_logic/reositories/product_repo.dart';
 import 'package:ui_templates/core/app_routes.dart';
 import 'package:ui_templates/presentation/screens/home_screen.dart';
 
@@ -37,6 +39,9 @@ class MyApp extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => JokeDogRepo(),
+        ),
+        RepositoryProvider(
+          create: (context) => ProductRepo(),
         )
       ],
       child: MultiBlocProvider(
@@ -58,6 +63,11 @@ class MyApp extends StatelessWidget {
           BlocProvider<DogJokeCubit>(
             create: (context) => DogJokeCubit(
               dogJokRepo: RepositoryProvider.of<JokeDogRepo>(context),
+            ),
+          ),
+          BlocProvider<ProductCubit>(
+            create: (context) => ProductCubit(
+              productRepo: RepositoryProvider.of<ProductRepo>(context),
             ),
           ),
         ],
