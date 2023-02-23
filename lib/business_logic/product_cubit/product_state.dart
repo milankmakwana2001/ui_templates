@@ -2,6 +2,7 @@ part of 'product_cubit.dart';
 
  class ProductState  {
   List<ProductModel> globalProductList;
+
    ProductState(this.globalProductList);
 
 

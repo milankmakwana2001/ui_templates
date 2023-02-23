@@ -40,6 +40,13 @@ class _ScreenFourState extends State<ScreenFour> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    scrollController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
@@ -71,30 +78,24 @@ class _ScreenFourState extends State<ScreenFour> {
                 horizontal: deviceWidth * 0.015,
               ),
               physics: BouncingScrollPhysics(),
-              itemCount: state.globalProductList.length + 1,
+              itemCount: state.globalProductList.length + 1 ,
               itemBuilder: (context, index) {
-                if(_productCubit.isLoading == true || index == state.globalProductList.length) {
+                if(index == state.globalProductList.length) {
                   return  Center(
                     child: CircularProgressIndicator(
                       color: AppColors.purple,
                     ),
                   );
                 }
-                // if (index == state.data.length) {
-                //   //showing loader at the bottom of list
-                //   return Center(child: CircularProgressIndicator());
-                // }
+
                 return Card(
                   child: ListTile(
                     leading: CircleAvatar(
                       child: Text(
-                          // state.data[index],
                           (index + 1).toString()),
                     ),
                     title: Text(
-                        // lorem(
-                        //   words: 1,
-                        // ),
+
                         state.data[index].title.toString()),
                     subtitle: Text(
                       lorem(

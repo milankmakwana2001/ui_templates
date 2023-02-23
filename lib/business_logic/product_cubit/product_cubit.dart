@@ -13,20 +13,15 @@ class ProductCubit extends Cubit<ProductState> {
   ProductCubit({required this.productRepo}) : super(ProductInitial([]));
 
 
-  bool isLoading = false;
-
   Future<void> getData() async {
     emit(Loading([]));
     try {
       Random random = new Random();
       int randomNumber = random.nextInt(5);
       final response = await productRepo.getProducts(pageNumber: randomNumber);
-
-
       if (state.globalProductList.isEmpty) {
         state.globalProductList.addAll(response);
       }
-
       emit(
         Success(
           data: response,
@@ -42,12 +37,10 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getMoreData() async {
     try {
-      isLoading=true;
       Random random = new Random();
       int randomNumber = random.nextInt(5);
       final response = await productRepo.getProducts(pageNumber: randomNumber);
       emit(Success(data: [...state.globalProductList, ...response]));
-      isLoading=false;
     } catch (e) {
       logg.log('${e.toString()} from ProductCubit in getMoreData');
       emit(
