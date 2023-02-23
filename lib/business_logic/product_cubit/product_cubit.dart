@@ -1,4 +1,5 @@
-import 'dart:developer';
+import 'dart:developer' as logg;
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:ui_templates/business_logic/models/product_model.dart';
@@ -9,30 +10,48 @@ part 'product_state.dart';
 class ProductCubit extends Cubit<ProductState> {
   ProductRepo productRepo;
 
-  ProductCubit({required this.productRepo})
-      : super(ProductInitial());
+  ProductCubit({required this.productRepo}) : super(ProductInitial([]));
+
+
+  bool isLoading = false;
 
   Future<void> getData() async {
-    emit(Loading());
+    emit(Loading([]));
     try {
-      final response = await productRepo.getProducts(productCount: 5);
-      // log('${response}', name: 'ProductCubit');
+      Random random = new Random();
+      int randomNumber = random.nextInt(5);
+      final response = await productRepo.getProducts(pageNumber: randomNumber);
+
+
+      if (state.globalProductList.isEmpty) {
+        state.globalProductList.addAll(response);
+      }
+
       emit(
         Success(
           data: response,
         ),
       );
-      response.forEach((element)  {
-          state.globalProductList?.add(element);
-      });
-     // state.globalProductList?.addAll(response);
-      log('${state.globalProductList!.length}', name: 'ProductCubit');
     } catch (e) {
-      log('${e.toString()} from ProductCubit in getData');
+      logg.log('${e.toString()} from ProductCubit in getData');
       emit(
-        Error(
+        Error(state.globalProductList),
+      );
+    }
+  }
 
-        ),
+  Future<void> getMoreData() async {
+    try {
+      isLoading=true;
+      Random random = new Random();
+      int randomNumber = random.nextInt(5);
+      final response = await productRepo.getProducts(pageNumber: randomNumber);
+      emit(Success(data: [...state.globalProductList, ...response]));
+      isLoading=false;
+    } catch (e) {
+      logg.log('${e.toString()} from ProductCubit in getMoreData');
+      emit(
+        Error(state.globalProductList),
       );
     }
   }

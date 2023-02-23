@@ -35,8 +35,8 @@ class AppStrings {
   static String dogUrl = 'https://dog.ceo/api/breeds/image/random';
   static String jokesUrl = 'https://official-joke-api.appspot.com/random_joke';
 
-  static String GetProductUrl({required int productCount}){
-    return 'https://api.escuelajs.co/api/v1/products?offset=0&limit=${productCount}';
+  static String GetProductUrl({required int pageNumber}){
+    return 'https://api.escuelajs.co/api/v1/products?offset=${pageNumber}&limit=5';
   }
 
 }

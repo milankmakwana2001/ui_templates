@@ -1,9 +1,9 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:ui_templates/business_logic/product_cubit/product_cubit.dart';
+import 'package:ui_templates/business_logic/reositories/product_repo.dart';
 import 'package:ui_templates/core/app_colors.dart';
 
 class ScreenFour extends StatefulWidget {
@@ -24,19 +24,19 @@ class _ScreenFourState extends State<ScreenFour> {
     _productCubit = context.read<ProductCubit>();
     _productCubit.getData();
 
+
     scrollController.addListener(() {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
-        Random random = new Random();
-        int randomNumber = random.nextInt(5);
-        _getMoreData(randomNumber);
+
+        _getMoreData();
       }
     });
     super.initState();
   }
 
-  _getMoreData(int pageNum) {
-    _productCubit.getData();
+  _getMoreData() {
+    _productCubit.getMoreData();
   }
 
   @override
@@ -45,9 +45,14 @@ class _ScreenFourState extends State<ScreenFour> {
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
     final deviceWidth = MediaQuery.of(context).size.width;
+    // return Scaffold(
+    //   body: Center(
+    //     child: Text('Screen four'),
+    //   ),
+    // );
     return Scaffold(
       backgroundColor: AppColors.offWhite,
-      body: BlocConsumer<ProductCubit, ProductState>(
+      body: BlocConsumer<ProductCubit,ProductState>(
         listener: (context, state) {
           // TODO: implement listener
         },
@@ -66,8 +71,19 @@ class _ScreenFourState extends State<ScreenFour> {
                 horizontal: deviceWidth * 0.015,
               ),
               physics: BouncingScrollPhysics(),
-              itemCount: state.data.length,
+              itemCount: state.globalProductList.length + 1,
               itemBuilder: (context, index) {
+                if(_productCubit.isLoading == true || index == state.globalProductList.length) {
+                  return  Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.purple,
+                    ),
+                  );
+                }
+                // if (index == state.data.length) {
+                //   //showing loader at the bottom of list
+                //   return Center(child: CircularProgressIndicator());
+                // }
                 return Card(
                   child: ListTile(
                     leading: CircleAvatar(

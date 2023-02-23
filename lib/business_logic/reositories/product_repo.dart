@@ -6,8 +6,8 @@ import 'package:ui_templates/business_logic/models/product_model.dart';
 import 'package:ui_templates/core/app_strings.dart';
 
 class ProductRepo {
-  Future<List<ProductModel>> getProducts({required int productCount}) async {
-    final String url = AppStrings.GetProductUrl(productCount: productCount);
+  Future<List<ProductModel>> getProducts({required int pageNumber}) async {
+    final String url = AppStrings.GetProductUrl(pageNumber: pageNumber);
     try {
       dynamic responseJson;
       final response = await http.get(Uri.parse(url));
