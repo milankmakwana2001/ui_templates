@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ui_templates/business_logic/Ip_address_cubit/ip_address_cubit.dart';
+import 'package:ui_templates/business_logic/cubit/Ip_address_cubit/ip_address_cubit.dart';
 import 'package:ui_templates/core/app_colors.dart';
 
 class ScreenTwo extends StatefulWidget {

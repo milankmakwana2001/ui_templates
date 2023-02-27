@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
-import 'package:ui_templates/business_logic/product_cubit/product_cubit.dart';
-import 'package:ui_templates/business_logic/reositories/product_repo.dart';
+import 'package:ui_templates/business_logic/cubit/product_cubit/product_cubit.dart';
 import 'package:ui_templates/core/app_colors.dart';
 
 class ScreenFour extends StatefulWidget {
@@ -24,11 +22,9 @@ class _ScreenFourState extends State<ScreenFour> {
     _productCubit = context.read<ProductCubit>();
     _productCubit.getData();
 
-
     scrollController.addListener(() {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
-
         _getMoreData();
       }
     });
@@ -59,7 +55,7 @@ class _ScreenFourState extends State<ScreenFour> {
     // );
     return Scaffold(
       backgroundColor: AppColors.offWhite,
-      body: BlocConsumer<ProductCubit,ProductState>(
+      body: BlocConsumer<ProductCubit, ProductState>(
         listener: (context, state) {
           // TODO: implement listener
         },
@@ -78,10 +74,10 @@ class _ScreenFourState extends State<ScreenFour> {
                 horizontal: deviceWidth * 0.015,
               ),
               physics: BouncingScrollPhysics(),
-              itemCount: state.globalProductList.length + 1 ,
+              itemCount: state.globalProductList.length + 1,
               itemBuilder: (context, index) {
-                if(index == state.globalProductList.length) {
-                  return  Center(
+                if (index == state.globalProductList.length) {
+                  return Center(
                     child: CircularProgressIndicator(
                       color: AppColors.purple,
                     ),
@@ -90,13 +86,13 @@ class _ScreenFourState extends State<ScreenFour> {
 
                 return Card(
                   child: ListTile(
+
                     leading: CircleAvatar(
-                      child: Text(
-                          (index + 1).toString()),
+                      child: Text((index + 1).toString()),
                     ),
                     title: Text(
-
-                        state.data[index].title.toString()),
+                      state.data[index].title.toString(),
+                    ),
                     subtitle: Text(
                       lorem(
                         paragraphs: 1,

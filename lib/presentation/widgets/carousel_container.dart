@@ -4,8 +4,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ui_templates/business_logic/carouser_cubit/carosel_cubit.dart';
+import 'package:ui_templates/business_logic/cubit/carouser_cubit/carosel_cubit.dart';
 import 'package:ui_templates/core/app_strings.dart';
+
 
 class CarouselContainer extends StatefulWidget {
   final double deviceHeight;

@@ -3,10 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ui_templates/business_logic/Ip_address_cubit/ip_address_cubit.dart';
-import 'package:ui_templates/business_logic/bottom_navigatiobar_cubit/bottom_navigationbar_cubit.dart';
-import 'package:ui_templates/business_logic/carouser_cubit/carosel_cubit.dart';
-import 'package:ui_templates/business_logic/dog_jokes_cubit/dog_joke_cubit.dart';
+import 'package:ui_templates/business_logic/cubit/bottom_navigatiobar_cubit/bottom_navigationbar_state.dart';
+
 import 'package:ui_templates/core/app_colors.dart';
 import 'package:ui_templates/core/app_enums.dart';
 import 'package:ui_templates/core/app_strings.dart';
@@ -15,7 +13,12 @@ import 'package:ui_templates/presentation/screens/screen_one.dart';
 import 'package:ui_templates/presentation/screens/screen_three.dart';
 import 'package:ui_templates/presentation/screens/screen_two.dart';
 
-import '../../business_logic/bottom_navigatiobar_cubit/bottom_navigationbar_state.dart';
+
+import 'package:ui_templates/business_logic/cubit/Ip_address_cubit/ip_address_cubit.dart';
+import 'package:ui_templates/business_logic/cubit/bottom_navigatiobar_cubit/bottom_navigationbar_cubit.dart';
+import 'package:ui_templates/business_logic/cubit/carouser_cubit/carosel_cubit.dart';
+import 'package:ui_templates/business_logic/cubit/dog_jokes_cubit/dog_joke_cubit.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static const pageRoute = '/';

@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ui_templates/business_logic/dog_jokes_cubit/dog_joke_cubit.dart';
+import 'package:ui_templates/business_logic/cubit/dog_jokes_cubit/dog_joke_cubit.dart';
 import 'package:ui_templates/core/app_colors.dart';
 
 class ScreenThree extends StatefulWidget {
